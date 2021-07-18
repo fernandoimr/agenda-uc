@@ -1131,7 +1131,7 @@ export class SeleccionComponent implements OnInit, OnChanges {
           return item;
         })
 
-        const especialidad = srvRequest.especialidades.find(item => {
+        const especialidad = especialidades.find(item => {
           return item.idEspecialidad === idEspecialidad
         });
         const servEspRequest:any = await this.agendaService.getServiciosByEspecialidad(idEspecialidad, ENV.areaConsultaMedica.id);
@@ -1142,7 +1142,7 @@ export class SeleccionComponent implements OnInit, OnChanges {
         especialidad.idServicio = servicio.id;
         especialidad.nombreServicio = servicio.nombre;
         
-        const profesional = null;
+        const profesional = deriv.profesional ?  deriv.profesional : null;
         const centroAtencion = {
           direccion: {
             calle: null,
@@ -1183,6 +1183,8 @@ export class SeleccionComponent implements OnInit, OnChanges {
           listadoEspecialidades: this.busquedaInicial.listadoEspecialidades
         };
 
+        console.log(busqueda)
+
         if(vista !== 'VISTA_DERIVACION'){
           this.removerDerivacion = true;
         }
@@ -1211,9 +1213,19 @@ export class SeleccionComponent implements OnInit, OnChanges {
     this.utils.actionAgendaBeneficiarios().setAgenda(benf);
   }
 
-  changeSelectEspecialidad(e){
-    const esp = e.value;
+  changeSelectEspecialidad(e, re){
+    let esp = e.value;
+    let profesional = null;
     esp.idServicioDerivado = esp.idServicio;
+    if(re){
+      profesional = {
+        nombre: re.nombre || re.nombreProfesional,
+        detalle: re.nombre || re.nombreProfesional,
+        id: re.id,
+        idProfesional : re.id
+      }
+    }
+    esp.profesional = profesional;
     this.consultarCalendario(esp, 'VISTA_DERIVACION');
   }
 

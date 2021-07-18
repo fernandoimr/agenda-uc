@@ -195,7 +195,7 @@ export class BuscarTuMedicoComponent implements OnInit {
           if (srvRequest && srvRequest.especialidadesPorServicio && srvRequest.especialidadesPorServicio.length > 0) {
 
             especialidades = srvRequest.especialidadesPorServicio.map(item => {
-              item.id = item.idEspecialidad;
+              item.id = item.idServicio;
               return item;
             })
 

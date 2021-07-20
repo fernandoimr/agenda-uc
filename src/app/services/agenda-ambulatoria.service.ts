@@ -36,7 +36,8 @@ export class AgendaAmbulatoriaService {
 
   getEspecialidadesByProfesional(idProfesional: string, idArea: string, filtro: any = null) {
     let keyf = (filtro) ? '&filtro=' + filtro : '';
-    return this.http.get(this.baseApi + '/Servicios/Rel/Especialidades?codCanal=PatientPortal&idProfesional=' + idProfesional + '&idArea=' + idArea + keyf);
+    const area = idArea ? '&idArea=' + idArea : '';
+    return this.http.get(this.baseApi + '/Servicios/Rel/Especialidades?codCanal=PatientPortal&idProfesional=' + idProfesional + area + keyf);
   }
 
   getProfesionales(idArea: string, filtro: any = null, idProfesional: string = null) {

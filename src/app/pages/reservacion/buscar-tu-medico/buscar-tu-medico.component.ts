@@ -184,7 +184,7 @@ export class BuscarTuMedicoComponent implements OnInit {
     return new Promise((resolve, reject) => {
 
 
-      this.agendaService.getEspecialidadesByProfesional(prof.idProfesionalPRM, ENV.areaConsultaMedica.id).subscribe(async (srvRequest: any) => {
+      this.agendaService.getEspecialidadesByProfesional(prof.idProfesionalPRM, null).subscribe(async (srvRequest: any) => {
 
         try {
 

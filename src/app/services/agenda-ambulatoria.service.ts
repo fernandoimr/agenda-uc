@@ -48,7 +48,8 @@ export class AgendaAmbulatoriaService {
   }
 
   getServiciosByEspecialidad(idEspecialidad, idArea) {
-    return this.http.get(this.baseApi + '/Servicios?codCanal=PatientPortal&idArea=' + idArea + '&idEspecialidad=' + idEspecialidad).toPromise();
+    const area = idArea ? '&idArea=' + idArea : '';
+    return this.http.get(this.baseApi + '/Servicios?codCanal=PatientPortal' + area + '&idEspecialidad=' + idEspecialidad).toPromise();
 
   }
 

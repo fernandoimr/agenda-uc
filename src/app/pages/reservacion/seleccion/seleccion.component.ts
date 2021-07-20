@@ -1134,7 +1134,7 @@ export class SeleccionComponent implements OnInit, OnChanges {
         const especialidad = especialidades.find(item => {
           return item.idEspecialidad === idEspecialidad
         });
-        const servEspRequest:any = await this.agendaService.getServiciosByEspecialidad(idEspecialidad, ENV.areaConsultaMedica.id);
+        const servEspRequest:any = await this.agendaService.getServiciosByEspecialidad(idEspecialidad, null);
         const servicio = servEspRequest.servicios.find(item => {
           return item.id === deriv.idServicioDerivado.toLowerCase()
         });

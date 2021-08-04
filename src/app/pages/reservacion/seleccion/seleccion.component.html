@@ -40,15 +40,16 @@
 			<div class="ctms" *ngIf="recursos.length == 0 ">
 				<div fxLayout="row wrap" fxLayoutAlign="center center" *ngIf="!filtroAplicado">
 					<div fxFlex="{{ busquedaInicial.area.id !== 'RIS_IMAGENES' ? '100%' : '69%'}}" fxFlex.sm="100%"
-						fxFlex.xs="100%" [innerHTML]="sanitizer.bypassSecurityTrustHtml(customMensaje)">
-						<div></div>
+						fxFlex.xs="100%">
+						<div>Estimado paciente, actualmente no encontramos citas disponibles. Favor volver a la búsqueda</div>
 					</div>
-					<div fxFlex="30%" fxFlex.sm="100%" fxFlex.xs="100%" style="text-align: center; margin-top: 20px;"
+					
+				<!--	<div fxFlex="30%" fxFlex.sm="100%" fxFlex.xs="100%" style="text-align: center; margin-top: 20px;"
 						*ngIf="busquedaInicial.area.id !== 'RIS_IMAGENES' && busquedaInicial.area.id !== idLaboratorioClinico">
 						<button mat-stroked-button class="btn-morado cus-pad cus" (click)="procesarListaEspera({})">
 							Inscríbase aquí
 						</button>
-					</div>
+					</div>-->
 				</div>
 				<div *ngIf="filtroAplicado">
 					<div>No se encontraron resultados aplicando los filtros seleccionados.</div>
@@ -258,7 +259,7 @@
 		
 										</div>
 									</div>
-									<div *ngIf="busquedaInicial.area.id !== 'RIS_IMAGENES'">
+								<!--	<div *ngIf="busquedaInicial.area.id !== 'RIS_IMAGENES'">
 										<mat-accordion class="lista-espera-acc"
 											*ngIf="(displayListaEspera(re.fechasDisponibles, re.poseeMes) || (counterLoader > 1 && today.getDate() !== 1) || (counterLoader > 0 && today.getDate() === 1)) && displayCalendar && !filtroAplicado && busquedaInicial.area.id !== idLaboratorioClinico">
 											<mat-expansion-panel>
@@ -273,7 +274,7 @@
 													hora te avisaremos.</p>
 											</mat-expansion-panel>
 										</mat-accordion>
-									</div>
+									</div>-->
 
 								</div>
 								<div class="clear"></div>
